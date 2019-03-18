@@ -1,4 +1,4 @@
-package app;
+package entities;
 
 public class Result {
     

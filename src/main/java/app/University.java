@@ -1,5 +1,6 @@
 package app;
 
+import entities.*;
 import java.util.List;
 
 enum CourseYear {

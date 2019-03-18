@@ -1,5 +1,7 @@
 package app;
 
+import entities.*;
+import exceptions.*;
 import java.util.List;
 
 public class StudentEnrollment {
