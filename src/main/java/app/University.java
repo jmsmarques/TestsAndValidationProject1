@@ -26,6 +26,17 @@ public class University {
      * of warnings received by the student.
      **/
     public int computeTuitionFees(Student st, List<Course> courses) {
-        return 0;
+        int result = 0;
+        if() { //no delayed courses
+            st.resetWarnings();
+        }
+        else if() { //between 1 and 4 delayed courses
+
+        }
+        else {
+
+        }
+
+        return result;
     }
 }

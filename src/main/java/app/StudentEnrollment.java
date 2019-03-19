@@ -54,8 +54,8 @@ public class StudentEnrollment {
     //Ends the enrollment process, setting the mode of this StudentEnrollment to ENROLLED if its mode is IN_ENROLLMENT
     //and the student is enrolled in at least one course. Otherwise, it throws InvalidInvocationException.
     void finishEnrollment() throws InvalidInvocationException { 
-        if(status.equals(EnrollmentMode.IN_ENROLLMENT)) {
-            status = EnrollmentMode.IN_ENROLLMENT;
+        if(enrolledCourses.size() > 0 && status.equals(EnrollmentMode.IN_ENROLLMENT)) {
+            status = EnrollmentMode.ENROLLED;
         }
         else {
             throw new InvalidInvocationException();
