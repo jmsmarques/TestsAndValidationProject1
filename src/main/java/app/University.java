@@ -3,17 +3,19 @@ package app;
 import entities.*;
 import java.util.List;
 
-enum CourseYear {
-    FIRST, SECOND, THIRD, FOURTH, FIFTH;
-}
-
 public class University {
+    private List<UniversityCourse> UniversityCourses;
+    private List<StudentEnrollment> EnrolledStudents;
+    private List<Course> Courses;
+
     public Course createCourse(String name, CourseYear year) {
-        return null;
+        Course newCourse = new Course(name, year);
+        return newCourse;
     }
 
     public Student createStudent(String name, String address) {
-        return null;
+        Student newStudent = new Student(name, address);
+        return newStudent;
     }
 
     /***

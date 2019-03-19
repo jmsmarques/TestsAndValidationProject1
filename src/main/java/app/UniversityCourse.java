@@ -19,8 +19,8 @@ public class UniversityCourse {
     // Removes a course from the list of courses of this university course.
     public void removeCourse(Course c) throws InvalidOperationException { /* ... */ }
 
-    // Adds a precedence between c1 and c2, meaning that c1 must precede c2.public
-    void addPrecedence(Course c1, Course c2) throws InvalidOperationException { /* ... */ }
+    // Adds a precedence between c1 and c2, meaning that c1 must precede c2.
+    public void addPrecedence(Course c1, Course c2) throws InvalidOperationException { /* ... */ }
 
     // Removes precedence between c1 and c2. If c1 does not precede c2 then it does nothing.
     // Returns true if the precedence was removed, false otherwise.

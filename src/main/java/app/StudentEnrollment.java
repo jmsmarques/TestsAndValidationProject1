@@ -6,9 +6,14 @@ import java.util.List;
 
 public class StudentEnrollment {
     public enum EnrollmentMode { NOT_ENROLLED, IN_ENROLLMENT, ENROLLED, SUSPENDED; }
-    
+    private Student enrolledStudent;
+    private EnrollmentMode status;
+
     //Creates a StudentEnrollment object in mode NOT_ENROLLED associated with the given student.
-    public StudentEnrollment(Student st) { /* ... */ }
+    public StudentEnrollment(Student st) { 
+        enrolledStudent = st;
+        status = EnrollmentMode.NOT_ENROLLED;
+     }
     
     //Changes the mode of this StudentEnrollment to IN_ENROLLMENT if the current
     //mode is NOT_ENROLLED. Otherwise, it throws InvalidInvocationException.
