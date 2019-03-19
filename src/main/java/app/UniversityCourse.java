@@ -2,6 +2,8 @@ package app;
 
 import entities.*;
 import exceptions.*;
+
+import java.util.List;
 import java.util.Set;
 
 public class UniversityCourse {
@@ -9,7 +11,13 @@ public class UniversityCourse {
      * Creates a university course with a single course (represented by parameter
      * course)* and whose maximum number of courses is specified by parameter max.
      **/
-    public UniversityCourse(Course course, int max) throws InvalidOperationException { /* ... */ }
+    private int max;
+    private List<Course> Courses;
+    
+    public UniversityCourse(Course course, int max) throws InvalidOperationException {
+        this.max = max;
+        Courses.add(course);
+    }
     /**
      * Adds c1 to the list of courses of this university course. If c2 is a valid course then
      * it is set as a precedence of c1. If c2 is null then c1 is added without any precedence.*
