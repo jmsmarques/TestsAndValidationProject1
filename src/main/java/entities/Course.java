@@ -5,7 +5,7 @@ package entities;
 public class Course {
     private String name;
     private CourseYear year;
-
+    
     public Course(String name, CourseYear year) {
         this.name = name;
         this.year = year;
@@ -18,4 +18,6 @@ public class Course {
     public CourseYear getYear() {
         return year;
     }
+
+   
 }

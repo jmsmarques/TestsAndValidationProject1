@@ -10,6 +10,8 @@ public class StudentEnrollment {
     private Student enrolledStudent;
     private EnrollmentMode status;
     private List<Course> enrolledCourses;
+    private List<Result> coursesResults;
+    private int endedCourses=0;
 
     //Creates a StudentEnrollment object in mode NOT_ENROLLED associated with the given student.
     public StudentEnrollment(Student st) { 
@@ -34,6 +36,9 @@ public class StudentEnrollment {
     void enrollInCourse(Course c) throws InvalidInvocationException { 
         if(status.equals(EnrollmentMode.IN_ENROLLMENT)) {
             enrolledCourses.add(c);
+            //creates Result of the new course and adds to the list
+            Result result= new Result(c);
+            coursesResults.add(result);
         }
         else {
             throw new InvalidInvocationException();
@@ -44,7 +49,8 @@ public class StudentEnrollment {
     //course, then it does nothing. It throws InvalidInvocationException if the mode is not IN_ENROLLMENT.
     void cancelEnrollmentInCourse(Course c) throws InvalidInvocationException { 
         if(status.equals(EnrollmentMode.IN_ENROLLMENT)) {
-            enrolledCourses.remove(c);
+            enrolledCourses.remove(c); // pode nao existir
+
         }
         else {
             throw new InvalidInvocationException();
@@ -56,6 +62,8 @@ public class StudentEnrollment {
     void finishEnrollment() throws InvalidInvocationException { 
         if(enrolledCourses.size() > 0 && status.equals(EnrollmentMode.IN_ENROLLMENT)) {
             status = EnrollmentMode.ENROLLED;
+        } else if(status.equals(EnrollmentMode.ENROLLED) ){ //if every course has a grade 
+
         }
         else {
             throw new InvalidInvocationException();

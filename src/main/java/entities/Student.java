@@ -4,6 +4,7 @@ public class Student {
     private String name;
     private String address;
     private int warnings;
+    
 
     public Student(String name, String address) {
         this.name = name;
@@ -26,4 +27,5 @@ public class Student {
     public String getAddress() {
         return address;
     }
+
 }
