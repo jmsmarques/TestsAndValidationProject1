@@ -22,6 +22,14 @@ public class UniversityCourse {
         this.max = max;
         courses = new HashSet<Course>();
         courses.add(course);
+        /*
+            Operations held by hashsets:
+                - .add()
+                - .contains()
+                - .remove()
+                - Iterator<String> i = h.iterator(); 
+                        while (i.hasNext()) 
+        */
     }
     /**
      * Adds c1 to the list of courses of this university course. If c2 is a valid course then

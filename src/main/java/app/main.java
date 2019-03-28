@@ -36,8 +36,15 @@ public class main{
 
 			//UniversityCourse uniCourse= new UniversityCourse(ist.createCourse("AMI", cY.FIRST),50);
 			//System.out.println("[X]Course Created: INFORMATICS: AMI - First...");
-			ist.createCourse("ED", cY.FIRST);
+			Course courseAux = ist.createCourse("ED", cY.FIRST);
 			System.out.println("[X]Course Created: AMI - First...");
+			try{
+				UniversityCourse universityCourseAux= new UniversityCourse(courseAux,50);
+				System.out.println("[X]UniversityCourse Created with "+courseAux.getName());
+			}
+			catch(Exception e){
+				System.out.println("Exceprion catched: "+e);
+			}
 			ist.createCourse("AMII",cY.SECOND);
 			System.out.println("[X]Course Created: AMII - Second... ");
 			ist.createCourse("POO",cY.SECOND);
@@ -64,6 +71,9 @@ public class main{
 			System.out.println("[X]Student Created: Rui Cenas");
 			
 			//University Courses
+			/*
+			In order to create an university course we need at minimum a Coueres and a max 
+			*/
 
 			
 
