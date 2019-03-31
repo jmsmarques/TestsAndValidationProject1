@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class University {
-    private List<UniversityCourse> UniversityCourses;
-    private List<StudentEnrollment> EnrolledStudents;
-    private List<Student> Students= new ArrayList<Student>();
-    private List<Course> Courses= new ArrayList<Course>();
+    private List<UniversityCourse> universityCourses= new ArrayList<UniversityCourse>();;
+    private List<StudentEnrollment> enrolledStudents;
+    private List<Student> students= new ArrayList<Student>();
+    private List<Course> courses= new ArrayList<Course>();
 
     public Course createCourse(String name, CourseYear year) {
         Course newCourse = new Course(name, year);
@@ -22,11 +22,11 @@ public class University {
         return newStudent;
     }
     public Boolean addCourse(Course course){
-    	return Courses.add(course);
+    	return courses.add(course);
 
     }
     public Boolean addStudent(Student student){
-    	return Students.add(student);
+    	return students.add(student);
     }
 
 
@@ -67,5 +67,67 @@ public class University {
         }
 */
         return result;
+    }public boolean coursesEmpty(){
+        if(courses.isEmpty()){
+            return true;
+        }else
+            return false;
     }
+
+    public void listCourses(){
+        System.out.println("\nList of courses:");
+        for(int i=0;i< courses.size();i++){
+            System.out.println("---\tName: "+ courses.get(i).getName()+" \n\tYears: "+ courses.get(i).getYear().toString());
+        }   
+    }
+    public Course findCourse(String name){
+        Course courseAux=null;
+        if(!courses.isEmpty()){
+            for(int i=0;i< courses.size();i++){
+                courseAux=courses.get(i);
+                if(courseAux.getName().equals(name)){
+                    return courseAux;
+                }
+            }   
+        }
+        return null;
+    }
+    public void listUniversityCourses(){
+        System.out.println("\nList of University Courses:");
+        for(int i=0;i< universityCourses.size();i++){
+            System.out.println("---\tName: "+ universityCourses.get(i).getName());
+        }   
+    }
+    public UniversityCourse findUniversityCourse(String name){
+        UniversityCourse universityCourseAux=null;
+        if(!universityCourses.isEmpty()){
+            for(int i=0;i< universityCourses.size();i++){
+                universityCourseAux=universityCourses.get(i);
+                if(universityCourseAux.getName().equals(name)){
+                    return universityCourseAux;
+                }
+            }   
+        }
+        return null;
+    }
+
+    public int removeUniversityCourse(String name){
+        UniversityCourse universityCourseAux=findUniversityCourse(name);
+        if(universityCourseAux!=null){
+            universityCourses.remove(universityCourseAux);
+            return 1;
+        }else
+
+        return 0;
+    
+    }
+    public int removeCourse(String name){
+
+        //Remove from every University Course, check dependencies 
+        Course courseAux=findCourse(name);
+        return 0;
+
+    }
+        
+    
 }

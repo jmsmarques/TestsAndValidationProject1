@@ -18,6 +18,9 @@ public class Course {
     public CourseYear getYear() {
         return year;
     }
+    public void print(){
+        System.out.println("\n\tNome: "+name+"\n\tYear: "+ year);
+    }
 
    
 }

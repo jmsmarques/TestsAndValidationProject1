@@ -15,11 +15,13 @@ public class UniversityCourse {
      * Creates a university course with a single course (represented by parameter
      * course)* and whose maximum number of courses is specified by parameter max.
      **/
+    private String name;
     private int max;
     private Set<Course> courses;
     
-    public UniversityCourse(Course course, int max) throws InvalidOperationException {
+    public UniversityCourse(String name, Course course, int max) throws InvalidOperationException {
         this.max = max;
+        this.name=name;
         courses = new HashSet<Course>();
         courses.add(course);
         /*
@@ -77,4 +79,8 @@ public class UniversityCourse {
     public int getNumberOfCourses() { 
         return courses.size(); 
     }
+    public String getName(){
+        return name;
+    }
+
 }
