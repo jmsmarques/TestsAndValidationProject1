@@ -121,10 +121,33 @@ public class University {
         return 0;
     
     }
+    //Removes 
+    private int removeCourseFromUniversityCourse(Course c1) {
+        //ESTE TRY CATCH ESTA MAL FEITO
+        UniversityCourse universityCourseAux=null;
+        for(int i=0; i<universityCourses.size();i++){
+            try{
+            if(universityCourses.get(i).removeCourse(c1)==1){
+                
+            }else{
+
+            }
+        }catch(Exception e){
+
+        }
+           
+        }
+        return 1;
+        }
+   
+
+
+    
     public int removeCourse(String name){
 
         //Remove from every University Course, check dependencies 
         Course courseAux=findCourse(name);
+
         return 0;
 
     }

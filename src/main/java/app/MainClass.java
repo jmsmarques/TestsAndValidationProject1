@@ -211,8 +211,9 @@ public class MainClass{
 							
 							break;
 						case "3":
+						//Remove University Course
 							System.out.println("\n\n\tRemove  University Course\n\n");
-							System.out.print("Course Name: ");
+							System.out.print("University Course Name: ");
 							name=in.nextLine();
 							if(ist.removeUniversityCourse(name)==1){
 								System.out.println("University Course "+name+ " removed!");
@@ -224,7 +225,16 @@ public class MainClass{
 							break;
 						
 						case "4":
-							ist.listCourses();
+							//Remove Course
+						System.out.println("\n\n\tRemove Course\n\n");
+							System.out.print("Course Name: ");
+							name=in.nextLine();
+							if(ist.removeCourse(name)==1){
+								System.out.println("University Course "+name+ " removed!");
+							}else{
+								System.out.println("Something went wrong! Does the University Course exist?");
+								}
+
 							
 							
 							break;

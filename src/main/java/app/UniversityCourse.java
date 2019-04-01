@@ -66,10 +66,34 @@ public class UniversityCourse {
      }
 
     // Removes a course from the list of courses of this university course.
-    public void removeCourse(Course c) throws InvalidOperationException { 
-        if(!courses.remove(c)) {
+    public int removeCourse(Course c) throws InvalidOperationException { 
+
+        if(courses.contains(c)) {
+            courses.remove(c);
+            for(int i=0; i< 50;i++){
+                if(depMatrix[i][0].equals(c.getName())){
+                    System.out.println("Course "+c.getName()+" removed from "+this.name+"!");
+
+                    depMatrix[i][0]=null;
+                    depMatrix[i][1]=null;
+                    depMatrix[i][2]=null;
+                    depMatrix[i][3]=null;
+                }else{
+                    for(int j=1;j<4;j++){
+                        if(depMatrix[i][j].equals(c.getName())){
+                            depMatrix[i][j]=null;
+                            System.out.println("Course "+c.getName()+" removed from dependencie of "+depMatrix[i][0]+"!");
+                        }
+                    }
+                }
+
+            }
+
+
+        }else{
             throw new InvalidOpenTypeException();
         }
+        return 1;
      }
 
     // Adds a precedence between c1 and c2, meaning that c1 must precede c2.
