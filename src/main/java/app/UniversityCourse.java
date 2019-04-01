@@ -18,17 +18,18 @@ public class UniversityCourse {
     private String name;
     private int max;
     private Set<Course> courses;
+    private String[][] depMatrix= new String[50][4]; 
     
     public UniversityCourse(String name, Course course, int max) throws InvalidOperationException {
         this.max = max;
         this.name=name;
         courses = new HashSet<Course>();
         courses.add(course);
+        depMatrix[courses.size()][0]=name;
         /*
             Operations held by hashsets:
                 - .add()
                 - .contains()
-                - .remove()
                 - Iterator<String> i = h.iterator(); 
                         while (i.hasNext()) 
         */
@@ -40,8 +41,23 @@ public class UniversityCourse {
     public void addCourse(Course c1, Course c2) throws InvalidOperationException { 
         if(c2 == null) {
             courses.add(c1);
+            depMatrix[courses.size()][0]=c1.getName();
+            System.out.println("[X]Added to depMatrix["+courses.size()+"]["+0+"]");
         }
         else if(courses.contains(c2)) { //c2 is valid
+            //Create dependency 
+            // Matrix
+            courses.add(c1);
+            depMatrix[courses.size()][0]=c1.getName();
+            System.out.println("[X]Added to depMatrix["+courses.size()+"]["+0+"]");
+            depMatrix[courses.size()][1]=c2.getName();
+            System.out.println("[X]Added to depMatrix["+courses.size()+"]["+1+"]");
+
+
+
+
+            //Touple???
+
             
         }
         else {
@@ -57,8 +73,21 @@ public class UniversityCourse {
      }
 
     // Adds a precedence between c1 and c2, meaning that c1 must precede c2.
-    public void addPrecedence(Course c1, Course c2) throws InvalidOperationException { /* ... */ }
-
+    public void addPrecedence(Course c1, Course c2) throws InvalidOperationException {
+        if(courses.contains(c1) && courses.contains(c2)){        
+            for(int i=0;i<50;i++) {
+                if(depMatrix[i][0].equals(c1.getName())){
+                    for(int j=1;j<4;j++){
+                        if(depMatrix[i][j]==null){
+                            depMatrix[i][j]=c2.getName();
+                            System.out.println("[X] precedence added to depMatrix["+i+"]["+j+"]");
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
     // Removes precedence between c1 and c2. If c1 does not precede c2 then it does nothing.
     // Returns true if the precedence was removed, false otherwise.
     public boolean removePrecedence(Course c1, Course c2) { 
