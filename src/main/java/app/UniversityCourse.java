@@ -26,6 +26,12 @@ public class UniversityCourse {
         courses = new HashSet<Course>();
         courses.add(course);
         depMatrix[courses.size()][0]=name;
+        if(course == null) {
+            throw new InvalidOperationException();
+        }
+        if(max > 50) {
+            throw new InvalidOperationException();
+        }
         /*
             Operations held by hashsets:
                 - .add()
@@ -132,8 +138,4 @@ public class UniversityCourse {
     public int getNumberOfCourses() { 
         return courses.size(); 
     }
-    public String getName(){
-        return name;
-    }
-
 }
