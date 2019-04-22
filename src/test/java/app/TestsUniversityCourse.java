@@ -14,7 +14,15 @@ public class TestsUniversityCourse extends Assert{
         return new Object[][] {
             {null, 20},
             {null, 51},
-            {new Course("name", CourseYear.FIRST), 51}
+            {new Course("name", CourseYear.FIRST), 51},
+            {new Course("name", CourseYear.FIRST), 0}
+        };
+    }
+
+    @DataProvider
+    private Object[][] addRemoveInputs() {
+        return new Object[][] {
+            {new Course("name", CourseYear.FIRST), new Course("name", CourseYear.FIRST)}
         };
     }
 
@@ -30,16 +38,14 @@ public class TestsUniversityCourse extends Assert{
     @Test(expectedExceptions = InvalidOperationException.class, dataProvider = "constructorInputs")
     public void testConstructor(Course aux, int maxCourses) throws InvalidOperationException {
         //max nr of courses cannot be bigget than 50
-        UniversityCourse help;
+        UniversityCourse uniAux;
 
-        help = new UniversityCourse("teste", aux, maxCourses);
+        uniAux = new UniversityCourse("teste", aux, maxCourses);
     }
 
-    @Test
-    public void testAddCourse() {
-        Course c1, c2;
+    @Test(dataProvider = "addRemoveInputs")
+    public void testAddCourse(Course c1, Course c2) {
         int nrCourses;
-
         nrCourses = uniCourse.getNumberOfCourses();
 
         //Act
@@ -54,11 +60,9 @@ public class TestsUniversityCourse extends Assert{
         assertTrue(uniCourse.getCourses().contains(c1), "Wrong item added");
     }
 
-    @Test
-    public void testRemoveCourse() {
-        Course c1;
+    @Test(dataProvider = "addRemoveInputs")
+    public void testRemoveCourse(Course c1, Course c2) {
         int nrCourses;
-
         nrCourses = uniCourse.getNumberOfCourses();
 
         //Act
@@ -82,5 +86,23 @@ public class TestsUniversityCourse extends Assert{
     @Test
     public void testRemovePrecedence() {
 
+    }
+
+    @Test(expectedExceptions = InvalidOperationException.class)
+    public void testMaxNrCourses() throws InvalidOperationException{
+        UniversityCourse uniAux;
+
+        uniAux = new UniversityCourse("teste", new Course("name", CourseYear.FIRST), 1);
+
+        uniAux.addCourse(new Course("na", CourseYear.FIRST), null);
+    }
+
+    @Test(expectedExceptions = InvalidOperationException.class)
+    public void testCourseName(Course c1, Course c2) throws InvalidOperationException{
+        UniversityCourse uniAux;
+
+        uniAux = new UniversityCourse("teste", new Course("name", CourseYear.FIRST), 5);
+
+        uniAux.addCourse(new Course("name", CourseYear.FIRST), null);
     }
 }
