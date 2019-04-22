@@ -41,7 +41,7 @@ public class TestsUniversityCourse extends Assert{
     }
 
     @Test(expectedExceptions = InvalidOperationException.class)
-    public void testCourseName(Course c1, Course c2) throws InvalidOperationException{
+    public void testCourseName(Course c1, Course c2) throws InvalidOperationException{ //testing repeated names
         UniversityCourse uniAux;
 
         uniAux = new UniversityCourse("teste", new Course("name", CourseYear.FIRST), 5);
