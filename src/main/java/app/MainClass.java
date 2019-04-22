@@ -20,17 +20,17 @@ public class MainClass{
 		
 		System.out.println("\t\t\t\t\t\tProject done by:\n\t\t\t\t\t\tFrancisco Quinaz\n\t\t\t\t\t\tJorge Marques\n\n");
 		//Initialization
-		Scanner in= new Scanner(System.in);
+		/*Scanner in= new Scanner(System.in);
 		String op,menu="menu1";
 		String name,address,year,max,courseName;
 		int aux=0;
 		University ist=new University();
-
+		*/
 		/*
 			POPULATE
 			___________________________________________________
 		*/	
-			System.out.println("[X]Populating....");
+		/*	System.out.println("[X]Populating....");
 			CourseYear cY=null;
 
 			//Courses
@@ -48,7 +48,7 @@ public class MainClass{
 				System.out.println("Exceprion catched: "+e);
 			}
 			*/
-			ist.createCourse("AMII",cY.SECOND);
+		/*	ist.createCourse("AMII",cY.SECOND);
 			System.out.println("[X]Course Created: AMII - Second... ");
 			ist.createCourse("POO",cY.SECOND);
 			System.out.println("[X]Course Created: POO - Second...");
@@ -93,10 +93,8 @@ public class MainClass{
 		/*
 			---------------------------------------------------
 		*/
-
-		while(true){
-		
-			
+		/*
+		while(true){	
 			switch(menu){
 				case "menu1":
 					System.out.print("\t\t== MENU1 ==\n\n\t1 - University\n\t2 - Student\n\n\t0-Exit\n>>>");
@@ -297,7 +295,7 @@ public class MainClass{
 			}
 		}
 
-
+		*/
 		
 	}
 
