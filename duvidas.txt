@@ -1,2 +1,0 @@
-Duvidas:
-	- Cada disciplina tem um nome unico no contexto do curso: Mas pode haver a mesma disciplina em cursos diferentes correto?

@@ -10,10 +10,9 @@ public class TestsUniversityCourse extends Assert{
     @DataProvider
     private Object[][] constructorInputs() {
         return new Object[][] {
-            {null, 20},
-            {new Course("name", CourseYear.FIRST), 51},
-            {new Course("name", CourseYear.FIRST), 0},
-            {new Course("name", CourseYear.FOURTH), 50}
+            {null, 39, 15},
+            {new Course("name", CourseYear.FIRST), 0, 0},            
+            {new Course("name", CourseYear.FIRST), 51, 49}                        
         };
     }
 
@@ -27,25 +26,33 @@ public class TestsUniversityCourse extends Assert{
     }
 
     @Test(expectedExceptions = InvalidOperationException.class, dataProvider = "constructorInputs")
-    public void testInvalidConstructor(Course aux, int maxCourses) throws InvalidOperationException {
+    public void testInvalidConstructor(Course aux, int maxCourses, int nrOfCourses) throws InvalidOperationException {
         UniversityCourse uniAux = new UniversityCourse("teste", aux, maxCourses);
+        int auxNr = 1;
+
+        int i = uniAux.getMaximumNumberOfCourses();
+        while(i < nrOfCourses) {
+            uniAux.addCourse(new Course(Integer.toString(auxNr), CourseYear.FOURTH), null);
+            i = uniAux.getMaximumNumberOfCourses();
+            auxNr++;
+        }
     }
 
-    @Test(expectedExceptions = InvalidOperationException.class)
-    public void testMaxNrCourses() throws InvalidOperationException{
-        UniversityCourse uniAux;
+    @Test
+    public void testValidConstructor() throws InvalidOperationException {
+        int nrOfCourses = 27;
+        int aux = 1;
+        UniversityCourse uniAux = new UniversityCourse("teste", new Course("name", CourseYear.FOURTH), 50);
 
-        uniAux = new UniversityCourse("teste", new Course("name", CourseYear.FIRST), 1);
-
-        uniAux.addCourse(new Course("na", CourseYear.FIRST), null);
-    }
-
-    @Test(expectedExceptions = InvalidOperationException.class)
-    public void testCourseName(Course c1, Course c2) throws InvalidOperationException{ //testing repeated names
-        UniversityCourse uniAux;
-
-        uniAux = new UniversityCourse("teste", new Course("name", CourseYear.FIRST), 5);
-
-        uniAux.addCourse(new Course("name", CourseYear.FIRST), null);
+        int i = uniAux.getMaximumNumberOfCourses();
+        try {
+            while(i < nrOfCourses) {
+                uniAux.addCourse(new Course(Integer.toString(aux), CourseYear.FOURTH), null);
+                i = uniAux.getMaximumNumberOfCourses();
+                aux++;
+            }
+        } catch(InvalidOperationException e) {
+            fail("Exception thrown when it shouldn't\n");
+        }
     }
 }
